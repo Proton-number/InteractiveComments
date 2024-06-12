@@ -1,14 +1,20 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import Comments from "./components/Comments";
+import CommentsMobile from "./components/commentsMobile";
+import { useLocalStorage } from "usehooks-ts";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [counters, setCounters] = useLocalStorage("local storage", {
+    amyrobson: 12,
+    maxblagun: 5,
+  });
   return (
     <>
-     Initial
+      <Comments counters={counters} setCounters={setCounters} />
+      <CommentsMobile counters={counters} setCounters={setCounters} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
