@@ -7,11 +7,13 @@ import {
   IconButton,
 } from "@mui/material";
 import React from "react";
-import amyrobson from "../images/avatars/image-amyrobson.png";
-import maxblagun from "../images/avatars/image-maxblagun.png";
+import amyrobson from "/src/images/avatars/image-amyrobson.png";
+import maxblagun from "/src/images/avatars/image-maxblagun.png";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ReplyIcon from "@mui/icons-material/Reply";
+import RepliesMobile from "./repliesMobile";
+import { AnimatePresence } from "framer-motion";
 
 const comments = [
   {
@@ -28,12 +30,19 @@ const comments = [
   },
 ];
 
-function CommentsMobile({ counters, setCounters }) {
+function CommentsMobile({
+  counters,
+  setCounters,
+  activeReplyIndex,
+  setActiveReplyIndex,
+  replyTo,
+  setReplyTo,
+}) {
   return (
     <>
       {comments.map((comment, index) => (
         <Stack key={index} sx={{ marginBottom: 5 }} id="mobile-Comments">
-          <Paper elevation={10}>
+          <Paper elevation={10} sx={{ marginBottom: 2 }}>
             <Stack sx={{ padding: "15px" }} spacing={1}>
               <Stack
                 direction="row"
@@ -97,7 +106,14 @@ function CommentsMobile({ counters, setCounters }) {
                   sx={{ alignItems: "center" }}
                   spacing={1}
                 >
-                  <IconButton>
+                  <IconButton
+                    onClick={() => {
+                      setActiveReplyIndex(
+                        activeReplyIndex === index ? null : index
+                      );
+                      setReplyTo(comment.name);
+                    }}
+                  >
                     <ReplyIcon sx={{ color: "hsl(238, 37%, 49%)" }} />
                   </IconButton>
                   <Typography
@@ -109,6 +125,11 @@ function CommentsMobile({ counters, setCounters }) {
               </Stack>
             </Stack>
           </Paper>
+          <AnimatePresence>
+            {activeReplyIndex === index && (
+              <RepliesMobile key={`replys-${index}`} replyTo={replyTo} />
+            )}
+          </AnimatePresence>
         </Stack>
       ))}
     </>

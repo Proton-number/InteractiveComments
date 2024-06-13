@@ -12,6 +12,8 @@ import maxblagun from "../images/avatars/image-maxblagun.png";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ReplyIcon from "@mui/icons-material/Reply";
+import Replies from "./Replies";
+import { AnimatePresence } from "framer-motion";
 
 const comments = [
   {
@@ -28,12 +30,20 @@ const comments = [
   },
 ];
 
-function Comments({ counters, setCounters }) {
+function Comments({
+  counters,
+  setCounters,
+  activeReplyIndex,
+  setActiveReplyIndex,
+  replyTo,
+  setReplyTo,
+}) {
+ 
   return (
     <>
       {comments.map((comment, index) => (
-        <Stack key={index} sx={{ marginBottom: 5 }} id='desktop-Comments'>
-          <Paper elevation={10}>
+        <Stack key={index} sx={{ marginBottom: 5 }} id="desktop-Comments">
+          <Paper elevation={10} sx={{ marginBottom: 2 }}>
             <Stack
               direction="row"
               sx={{ alignItems: "center", padding: "20px" }}
@@ -60,7 +70,10 @@ function Comments({ counters, setCounters }) {
                   onClick={() => {
                     setCounters((prevCounters) => ({
                       ...prevCounters,
-                      [comment.name]: Math.max(0, prevCounters[comment.name] - 1),
+                      [comment.name]: Math.max(
+                        0,
+                        prevCounters[comment.name] - 1
+                      ),
                     }));
                   }}
                 >
@@ -91,7 +104,14 @@ function Comments({ counters, setCounters }) {
                     sx={{ alignItems: "center" }}
                     spacing={1}
                   >
-                    <IconButton>
+                    <IconButton
+                      onClick={() => {
+                        setActiveReplyIndex(
+                          activeReplyIndex === index ? null : index
+                        );
+                        setReplyTo(comment.name);
+                      }}
+                    >
                       <ReplyIcon sx={{ color: "hsl(238, 37%, 49%)" }} />
                     </IconButton>
                     <Typography
@@ -116,6 +136,11 @@ function Comments({ counters, setCounters }) {
               </Stack>
             </Stack>
           </Paper>
+          <AnimatePresence>
+            {activeReplyIndex === index && (
+              <Replies key={`replys-${index}`} replyTo={replyTo} />
+            )}
+          </AnimatePresence>
         </Stack>
       ))}
     </>
