@@ -12,6 +12,9 @@ function App() {
   });
   const [activeReplyIndex, setActiveReplyIndex] = useState(null);
   const [replyTo, setReplyTo] = useState("");
+  const [juliuLikes, setJulioLikes] = useState(0);
+  const [data, setData] = useLocalStorage("local storage for comments", []);
+  const [inputValue, setInputValue] = useState("");
   return (
     <>
       <Comments
@@ -30,7 +33,14 @@ function App() {
         replyTo={replyTo}
         setReplyTo={setReplyTo}
       />
-      <CommentBox/>
+      <CommentBox
+        juliuLikes={juliuLikes}
+        setJulioLikes={setJulioLikes}
+        data={data}
+        setData={setData}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+      />
     </>
   );
 }
