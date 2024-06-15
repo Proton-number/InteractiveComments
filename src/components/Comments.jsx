@@ -41,7 +41,7 @@ function Comments({
   return (
     <>
       {comments.map((comment, index) => (
-        <Stack key={index} sx={{ marginBottom: 3 }} id="desktop-Comments">
+        <Stack key={index} sx={{ marginBottom: 3 }} id="desktop">
           <Paper elevation={10} sx={{ marginBottom: 2 }}>
             <Stack
               direction="row"

@@ -4,6 +4,7 @@ import Comments from "./components/Comments";
 import { useLocalStorage } from "usehooks-ts";
 import CommentsMobile from "./components/Mobile/commentsMobile";
 import CommentBox from "./components/commentBox";
+import CommentBoxMobile from "./components/Mobile/commentBoxMobile";
 
 function App() {
   const [counters, setCounters] = useLocalStorage("local storage", {
@@ -12,9 +13,10 @@ function App() {
   });
   const [activeReplyIndex, setActiveReplyIndex] = useState(null);
   const [replyTo, setReplyTo] = useState("");
-  const [juliuLikes, setJulioLikes] = useState(0);
   const [data, setData] = useLocalStorage("local storage for comments", []);
   const [inputValue, setInputValue] = useState("");
+  const [editComment, setEditComment] = useState(null);
+
   return (
     <>
       <Comments
@@ -34,12 +36,20 @@ function App() {
         setReplyTo={setReplyTo}
       />
       <CommentBox
-        juliuLikes={juliuLikes}
-        setJulioLikes={setJulioLikes}
         data={data}
         setData={setData}
         inputValue={inputValue}
         setInputValue={setInputValue}
+        editComment={editComment}
+        setEditComment={setEditComment}
+      />
+      <CommentBoxMobile
+        data={data}
+        setData={setData}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        editComment={editComment}
+        setEditComment={setEditComment}
       />
     </>
   );

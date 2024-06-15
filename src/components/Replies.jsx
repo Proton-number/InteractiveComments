@@ -2,7 +2,6 @@ import { Paper, Stack, Avatar, Button, TextField, Box } from "@mui/material";
 import React from "react";
 import juliusomo from "/src/images/avatars/image-juliusomo.png";
 import { motion } from "framer-motion";
-import Divider from "@mui/material/Divider";
 
 function Replies({ replyTo }) {
   return (

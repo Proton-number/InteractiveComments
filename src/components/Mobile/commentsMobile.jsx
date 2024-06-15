@@ -41,7 +41,7 @@ function CommentsMobile({
   return (
     <>
       {comments.map((comment, index) => (
-        <Stack key={index} sx={{ marginBottom: 5 }} id="mobile-Comments">
+        <Stack key={index} sx={{ marginBottom: 5 }} id="mobile">
           <Paper elevation={10} sx={{ marginBottom: 2 }}>
             <Stack sx={{ padding: "15px" }} spacing={1}>
               <Stack
