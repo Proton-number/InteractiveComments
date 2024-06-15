@@ -7,7 +7,7 @@ function RepliesMobile({ replyTo }) {
   return (
     <Stack
       direction="row"
-      sx={{ justifyContent: "space-around" }}
+      sx={{ justifyContent: "space-evenly" }}
       component={motion.div}
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
@@ -26,7 +26,7 @@ function RepliesMobile({ replyTo }) {
         }}
       />
       <Paper
-        sx={{ padding: "18px" }}
+        sx={{ padding: "18px", width: "78%" }}
         elevation={10}
         component={motion.div}
         initial={{ opacity: 0, y: 12 }}

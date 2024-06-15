@@ -168,7 +168,7 @@ function CommentBox({
                   </Stack>
                   <Stack direction="row" spacing={4}>
                     <Button
-                      onClick={deleteHandler}
+                      onClick={() => deleteHandler(index)}
                       startIcon={<DeleteIcon />}
                       sx={{
                         color: "hsl(357, 100%, 68%)",

@@ -37,6 +37,10 @@ function Comments({
   setActiveReplyIndex,
   replyTo,
   setReplyTo,
+  replies,
+  setReplies,
+  replyValue,
+  setReplyValue,
 }) {
   return (
     <>
@@ -137,7 +141,16 @@ function Comments({
           </Paper>
           <AnimatePresence>
             {activeReplyIndex === index && (
-              <Replies key={`replys-${index}`} replyTo={replyTo} />
+              <Replies
+                key={`replys-${index}`}
+                replyTo={replyTo}
+                counters={counters}
+                setCounters={setCounters}
+                replies={replies}
+                setReplies={setReplies}
+                replyValue={replyValue}
+                setReplyValue={setReplyValue}
+              />
             )}
           </AnimatePresence>
         </Stack>

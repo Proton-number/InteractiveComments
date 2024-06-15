@@ -15,8 +15,9 @@ function App() {
   const [replyTo, setReplyTo] = useState("");
   const [data, setData] = useLocalStorage("local storage for comments", []);
   const [inputValue, setInputValue] = useState("");
+  const [replyValue, setReplyValue] = useState("");
   const [editComment, setEditComment] = useState(null);
-
+  const [replies, setReplies] = useState([]);
   return (
     <>
       <Comments
@@ -26,6 +27,10 @@ function App() {
         setActiveReplyIndex={setActiveReplyIndex}
         replyTo={replyTo}
         setReplyTo={setReplyTo}
+        replies={replies}
+        setReplies={setReplies}
+        replyValue={replyValue}
+        setReplyValue={setReplyValue}
       />
       <CommentsMobile
         counters={counters}
