@@ -41,6 +41,9 @@ function Comments({
   setReplies,
   replyValue,
   setReplyValue,
+  editComment,
+  setEditComment,
+  timeAgo,
 }) {
   return (
     <>
@@ -150,6 +153,10 @@ function Comments({
                 setReplies={setReplies}
                 replyValue={replyValue}
                 setReplyValue={setReplyValue}
+                index={index}
+                editComment={editComment}
+                setEditComment={setEditComment}
+                timeAgo={timeAgo}
               />
             )}
           </AnimatePresence>

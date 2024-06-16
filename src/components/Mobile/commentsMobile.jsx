@@ -37,6 +37,13 @@ function CommentsMobile({
   setActiveReplyIndex,
   replyTo,
   setReplyTo,
+  replies,
+  setReplies,
+  replyValue,
+  setReplyValue,
+  editComment,
+  setEditComment,
+  timeAgo,
 }) {
   return (
     <>
@@ -127,7 +134,20 @@ function CommentsMobile({
           </Paper>
           <AnimatePresence>
             {activeReplyIndex === index && (
-              <RepliesMobile key={`replys-${index}`} replyTo={replyTo} />
+              <RepliesMobile
+                key={`replys-${index}`}
+                replyTo={replyTo}
+                counters={counters}
+                setCounters={setCounters}
+                replies={replies}
+                setReplies={setReplies}
+                replyValue={replyValue}
+                setReplyValue={setReplyValue}
+                index={index}
+                editComment={editComment}
+                setEditComment={setEditComment}
+                timeAgo={timeAgo}
+              />
             )}
           </AnimatePresence>
         </Stack>
